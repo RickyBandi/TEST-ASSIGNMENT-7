@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - SecureBank Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">SB</div>
+                    <div class="logo-text">SecureBank</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-details">
+                        <h4>2303A52336</h4>
+                        <p>Premium Customer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts.html" class="nav-link">
+                            <div class="nav-icon">💰</div>
+                            Accounts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transactions.html" class="nav-link active">
+                            <div class="nav-icon">💸</div>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payments.html" class="nav-link">
+                            <div class="nav-icon">💳</div>
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <div class="nav-icon">📈</div>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="simple-interest.html" class="nav-link">
+                            <div class="nav-icon">🧮</div>
+                            Simple Interest
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">
+                <span>Transactions</span>
+                <span>›</span>
+                <span>Transaction History</span>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search transactions...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <button class="notifications-btn">
+                    <span>🔔</span>
+                    <div class="notification-badge"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Transaction Center -->
+            <div class="transaction-center">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">💸</div>
+                        Transaction Center
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="deposit">Deposit</button>
+                    <button class="tab" data-tab="withdraw">Withdraw</button>
+                    <button class="tab" data-tab="transfer">Transfer</button>
+                    <button class="tab" data-tab="payment">Payment</button>
+                </div>
+
+                <div class="tab-content" id="depositTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="depositAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="depositAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" id="depositDescription" class="form-input" placeholder="Enter description">
+                    </div>
+                    <button class="btn btn-success" id="depositBtn">Deposit</button>
+                </div>
+
+                <div class="tab-content hidden" id="withdrawTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="withdrawAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="withdrawAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" id="withdrawDescription" class="form-input" placeholder="Enter description">
+                    </div>
+                    <button class="btn btn-danger" id="withdrawBtn">Withdraw</button>
+                </div>
+
+                <div class="tab-content hidden" id="transferTab">
+                    <div class="form-group">
+                        <label class="form-label">From Account</label>
+                        <select id="transferFrom" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">To Account</label>
+                        <select id="transferTo" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="transferAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" id="transferDescription" class="form-input" placeholder="Enter description">
+                    </div>
+                    <button class="btn btn-primary" id="transferBtn">Transfer</button>
+                </div>
+
+                <div class="tab-content hidden" id="paymentTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="paymentAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Payment Type</label>
+                        <select id="paymentType" class="form-select">
+                            <option value="bill">Bill Payment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="fuel">Fuel</option>
+                            <option value="food">Food & Dining</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="paymentAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" id="paymentDescription" class="form-input" placeholder="Enter payment description">
+                    </div>
+                    <button class="btn btn-warning" id="paymentBtn">Make Payment</button>
+                </div>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="recent-activity">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📜</div>
+                        Transaction History
+                    </div>
+                </div>
+                <div class="transactions-container" id="transactionsList"></div>
+            </div>
+
+            <!-- Transaction Statistics -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📊</div>
+                        Transaction Statistics
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Today's Transactions</h3>
+                            <span class="analytics-value" id="todayTransactions">0</span>
+                        </div>
+                        <div class="transaction-stats">
+                            <div class="stat-item">
+                                <span>Deposits:</span>
+                                <span id="todayDeposits">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Withdrawals:</span>
+                                <span id="todayWithdrawals">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Transfers:</span>
+                                <span id="todayTransfers">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Payments:</span>
+                                <span id="todayPayments">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>This Month</h3>
+                            <span class="analytics-value" id="monthTransactions">0</span>
+                        </div>
+                        <div class="transaction-stats">
+                            <div class="stat-item">
+                                <span>Total Volume:</span>
+                                <span id="monthVolume">₹0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Average Amount:</span>
+                                <span id="monthAverage">₹0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Largest Transaction:</span>
+                                <span id="monthLargest">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Command History</h3>
+                            <span class="analytics-value" id="commandCount">0</span>
+                        </div>
+                        <div class="transaction-stats">
+                            <div class="stat-item">
+                                <span>Executed Commands:</span>
+                                <span id="executedCommands">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Undo Available:</span>
+                                <span id="undoAvailable">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Last Action:</span>
+                                <span id="lastAction">None</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- JavaScript -->
+    <script src="banking.js"></script>
+    <script>
+        // Initialize banking system
+        initBanking();
+
+        // Tab switching
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+                tab.classList.add("active");
+                document.getElementById(tab.dataset.tab + "Tab").classList.remove("hidden");
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => {
+                renderTransactions();
+            });
+        }
+
+        // Filter functionality
+        function addFilterChips() {
+            const activitySection = document.querySelector(".recent-activity .section-header");
+            if (!activitySection) return;
+            
+            const filtersContainer = document.createElement("div");
+            filtersContainer.className = "activity-filters";
+            filtersContainer.innerHTML = `
+                <div class="filter-chip ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">All</div>
+                <div class="filter-chip ${currentFilter === 'deposit' ? 'active' : ''}" data-filter="deposit">Deposits</div>
+                <div class="filter-chip ${currentFilter === 'withdraw' ? 'active' : ''}" data-filter="withdraw">Withdrawals</div>
+                <div class="filter-chip ${currentFilter === 'transfer' ? 'active' : ''}" data-filter="transfer">Transfers</div>
+                <div class="filter-chip ${currentFilter === 'payment' ? 'active' : ''}" data-filter="payment">Payments</div>
+            `;
+            
+            activitySection.appendChild(filtersContainer);
+            
+            filtersContainer.querySelectorAll(".filter-chip").forEach(chip => {
+                chip.addEventListener("click", () => {
+                    currentFilter = chip.dataset.filter;
+                    filtersContainer.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+                    chip.classList.add("active");
+                    renderTransactions();
+                });
+            });
+        }
+
+        // Transaction actions using Command Pattern
+        document.getElementById("depositBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("depositAccount").value;
+            const amount = parseFloat(document.getElementById("depositAmount").value);
+            const description = document.getElementById("depositDescription").value || `Deposit to ${accountType} account`;
+            
+            const validation = validateAmount(amount, 0, 1000000);
+            if (!validation.valid) {
+                showNotification("error", validation.message);
+                return;
+            }
+
+            try {
+                const command = new DepositCommand(accounts[accountType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderTransactions();
+                    updateAnalytics();
+                    updateTransactionStats();
+                    showNotification("success", `Deposited ${formatAmount(amount)} to ${accountType} account`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        document.getElementById("withdrawBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("withdrawAccount").value;
+            const amount = parseFloat(document.getElementById("withdrawAmount").value);
+            const description = document.getElementById("withdrawDescription").value || `Withdrawal from ${accountType} account`;
+            
+            const validation = validateAmount(amount, 0, accounts[accountType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const command = new WithdrawCommand(accounts[accountType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderTransactions();
+                    updateAnalytics();
+                    updateTransactionStats();
+                    showNotification("info", `Withdrew ${formatAmount(amount)} from ${accountType} account`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        document.getElementById("transferBtn").addEventListener("click", () => {
+            const fromType = document.getElementById("transferFrom").value;
+            const toType = document.getElementById("transferTo").value;
+            const amount = parseFloat(document.getElementById("transferAmount").value);
+            const description = document.getElementById("transferDescription").value || `Transfer from ${fromType} to ${toType}`;
+            
+            if (fromType === toType) {
+                showNotification("error", "Cannot transfer to the same account!");
+                return;
+            }
+
+            const validation = validateAmount(amount, 0, accounts[fromType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const command = new TransferCommand(accounts[fromType], accounts[toType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderTransactions();
+                    updateAnalytics();
+                    updateTransactionStats();
+                    showNotification("success", `Transferred ${formatAmount(amount)} from ${fromType} to ${toType}`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        document.getElementById("paymentBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("paymentAccount").value;
+            const amount = parseFloat(document.getElementById("paymentAmount").value);
+            const paymentType = document.getElementById("paymentType").value;
+            const description = document.getElementById("paymentDescription").value;
+            
+            const validation = validateAmount(amount, 0, accounts[accountType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const paymentDescription = description || `${paymentType.charAt(0).toUpperCase() + paymentType.slice(1)} Payment`;
+                const command = new WithdrawCommand(accounts[accountType], amount, paymentDescription);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderTransactions();
+                    updateAnalytics();
+                    updateTransactionStats();
+                    showNotification("warning", `Payment of ${formatAmount(amount)} made from ${accountType} account`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        // Update transaction statistics
+        function updateTransactionStats() {
+            const allTransactions = getAllTransactions();
+            const today = new Date();
+            const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            
+            // Today's transactions
+            const todayTransactions = allTransactions.filter(tx => 
+                new Date(tx.timestamp) >= todayStart
+            );
+            
+            const todayDeposits = todayTransactions.filter(tx => tx.type === 'deposit').length;
+            const todayWithdrawals = todayTransactions.filter(tx => tx.type === 'withdraw').length;
+            const todayTransfers = todayTransactions.filter(tx => tx.type === 'transfer').length;
+            const todayPayments = todayTransactions.filter(tx => tx.type === 'payment').length;
+            
+            document.getElementById("todayTransactions").textContent = todayTransactions.length;
+            document.getElementById("todayDeposits").textContent = todayDeposits;
+            document.getElementById("todayWithdrawals").textContent = todayWithdrawals;
+            document.getElementById("todayTransfers").textContent = todayTransfers;
+            document.getElementById("todayPayments").textContent = todayPayments;
+            
+            // This month's transactions
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            const monthTransactions = allTransactions.filter(tx => {
+                const txDate = new Date(tx.timestamp);
+                return txDate.getMonth() === currentMonth && txDate.getFullYear() === currentYear;
+            });
+            
+            const monthVolume = monthTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+            const monthAverage = monthTransactions.length > 0 ? monthVolume / monthTransactions.length : 0;
+            const monthLargest = monthTransactions.length > 0 ? Math.max(...monthTransactions.map(tx => tx.amount)) : 0;
+            
+            document.getElementById("monthTransactions").textContent = monthTransactions.length;
+            document.getElementById("monthVolume").textContent = formatAmount(monthVolume);
+            document.getElementById("monthAverage").textContent = formatAmount(monthAverage);
+            document.getElementById("monthLargest").textContent = formatAmount(monthLargest);
+            
+            // Command history
+            const commandHistory = commandInvoker.history;
+            document.getElementById("commandCount").textContent = commandHistory.length;
+            document.getElementById("executedCommands").textContent = commandHistory.length;
+            document.getElementById("undoAvailable").textContent = commandHistory.length;
+            document.getElementById("lastAction").textContent = commandHistory.length > 0 ? 
+                commandHistory[commandHistory.length - 1].constructor.name : "None";
+        }
+
+        // Add undo button
+        function addUndoButton() {
+            const headerActions = document.querySelector('.header-actions');
+            const undoButton = document.createElement('button');
+            undoButton.innerHTML = '↶ Undo';
+            undoButton.className = 'btn btn-outline';
+            undoButton.style.marginRight = '1rem';
+            undoButton.addEventListener('click', () => {
+                try {
+                    commandInvoker.undoLastCommand();
+                    updateBalances();
+                    renderTransactions();
+                    updateAnalytics();
+                    updateTransactionStats();
+                    showNotification('info', 'Last transaction undone');
+                } catch (error) {
+                    showNotification('error', error.message);
+                }
+            });
+            headerActions.insertBefore(undoButton, headerActions.firstChild);
+        }
+
+        // Initialize page
+        addFilterChips();
+        addUndoButton();
+        updateTransactionStats();
+        
+        // Update stats periodically
+        setInterval(() => {
+            updateTransactionStats();
+        }, 5000);
+    </script>
+</body>
+</html>

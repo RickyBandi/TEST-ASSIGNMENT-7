@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator - SecureBank Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calculator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .calculator-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .calculator-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .calculator-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group-full {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-calculate {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+
+        .result-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+        }
+
+        .result-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .formula-section {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .formula-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .formula-box {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .formula-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-explanation {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .examples-section {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .examples-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .example-item {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .example-details {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">SB</div>
+                    <div class="logo-text">SecureBank</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-details">
+                        <h4>2303A52336</h4>
+                        <p>Premium Customer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts.html" class="nav-link">
+                            <div class="nav-icon">💰</div>
+                            Accounts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transactions.html" class="nav-link">
+                            <div class="nav-icon">💸</div>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payments.html" class="nav-link">
+                            <div class="nav-icon">💳</div>
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <div class="nav-icon">📈</div>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="simple-interest.html" class="nav-link active">
+                            <div class="nav-icon">🧮</div>
+                            Simple Interest
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">
+                <span>Simple Interest Calculator</span>
+                <span>›</span>
+                <span>Financial Tools</span>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <button class="notifications-btn">
+                    <span>🔔</span>
+                    <div class="notification-badge"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="calculator-container">
+                <!-- Header -->
+                <div class="calculator-header">
+                    <h1 class="calculator-title">Simple Interest Calculator</h1>
+                    <p class="calculator-subtitle">
+                        Calculate simple interest for your investments and loans with our easy-to-use calculator
+                    </p>
+                </div>
+
+                <!-- Formula Section -->
+                <div class="formula-section">
+                    <h2 class="formula-title">
+                        <span>📐</span>
+                        Simple Interest Formula
+                    </h2>
+                    <div class="formula-box">
+                        <div class="formula-text">SI = (P × R × T) / 100</div>
+                    </div>
+                    <div class="formula-explanation">
+                        <p><strong>Where:</strong></p>
+                        <ul>
+                            <li><strong>SI</strong> = Simple Interest</li>
+                            <li><strong>P</strong> = Principal Amount (Initial Investment/Loan)</li>
+                            <li><strong>R</strong> = Rate of Interest per annum (%)</li>
+                            <li><strong>T</strong> = Time period in years</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Calculator Grid -->
+                <div class="calculator-grid">
+                    <!-- Basic Calculator -->
+                    <div class="calculator-card">
+                        <h3>
+                            <span>🧮</span>
+                            Basic Calculator
+                        </h3>
+                        <form id="basicCalculator">
+                            <div class="form-group-full">
+                                <label class="form-label">Principal Amount (₹)</label>
+                                <input type="number" id="principal" class="form-input" placeholder="Enter principal amount" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Interest Rate (%)</label>
+                                    <input type="number" id="rate" class="form-input" placeholder="Rate per annum" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Time Period</label>
+                                    <input type="number" id="time" class="form-input" placeholder="Years" step="0.01" required>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-calculate">Calculate Interest</button>
+                        </form>
+                        
+                        <div id="basicResult" class="result-card" style="display: none;">
+                            <div class="result-title">
+                                <span>💰</span>
+                                Calculation Result
+                            </div>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <div class="result-label">Principal Amount</div>
+                                    <div class="result-value" id="resultPrincipal">₹0</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Interest Rate</div>
+                                    <div class="result-value" id="resultRate">0%</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Time Period</div>
+                                    <div class="result-value" id="resultTime">0 years</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Simple Interest</div>
+                                    <div class="result-value" id="resultInterest">₹0</div>
+                                </div>
+                                <div class="result-item" style="grid-column: 1 / -1;">
+                                    <div class="result-label">Total Amount</div>
+                                    <div class="result-value" id="resultTotal">₹0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account-Based Calculator -->
+                    <div class="calculator-card">
+                        <h3>
+                            <span>🏦</span>
+                            Account-Based Calculator
+                        </h3>
+                        <form id="accountCalculator">
+                            <div class="form-group-full">
+                                <label class="form-label">Select Account</label>
+                                <select id="accountType" class="form-select">
+                                    <option value="savings">Savings Account (4.5% p.a.)</option>
+                                    <option value="current">Current Account (2.0% p.a.)</option>
+                                    <option value="fd">Fixed Deposit (7.5% p.a.)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group-full">
+                                <label class="form-label">Current Balance (₹)</label>
+                                <input type="number" id="accountBalance" class="form-input" placeholder="Enter current balance" required>
+                            </div>
+                            
+                            <div class="form-group-full">
+                                <label class="form-label">Time Period (Months)</label>
+                                <input type="number" id="accountTime" class="form-input" placeholder="Enter months" min="1" max="60" required>
+                            </div>
+                            
+                            <button type="submit" class="btn-calculate">Calculate Interest</button>
+                        </form>
+                        
+                        <div id="accountResult" class="result-card" style="display: none;">
+                            <div class="result-title">
+                                <span>🏦</span>
+                                Account Interest Result
+                            </div>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <div class="result-label">Account Type</div>
+                                    <div class="result-value" id="resultAccountType">-</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Interest Rate</div>
+                                    <div class="result-value" id="resultAccountRate">0%</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Time Period</div>
+                                    <div class="result-value" id="resultAccountTime">0 months</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Interest Earned</div>
+                                    <div class="result-value" id="resultAccountInterest">₹0</div>
+                                </div>
+                                <div class="result-item" style="grid-column: 1 / -1;">
+                                    <div class="result-label">Future Balance</div>
+                                    <div class="result-value" id="resultAccountTotal">₹0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Examples Section -->
+                <div class="examples-section">
+                    <h2 class="examples-title">
+                        <span>💡</span>
+                        Calculation Examples
+                    </h2>
+                    
+                    <div class="example-item">
+                        <div class="example-title">Example 1: Savings Account</div>
+                        <div class="example-details">
+                            Principal: ₹1,00,000 | Rate: 4.5% p.a. | Time: 2 years<br>
+                            Simple Interest = (1,00,000 × 4.5 × 2) / 100 = ₹9,000<br>
+                            Total Amount = ₹1,00,000 + ₹9,000 = ₹1,09,000
+                        </div>
+                    </div>
+                    
+                    <div class="example-item">
+                        <div class="example-title">Example 2: Fixed Deposit</div>
+                        <div class="example-details">
+                            Principal: ₹5,00,000 | Rate: 7.5% p.a. | Time: 1.5 years<br>
+                            Simple Interest = (5,00,000 × 7.5 × 1.5) / 100 = ₹56,250<br>
+                            Total Amount = ₹5,00,000 + ₹56,250 = ₹5,56,250
+                        </div>
+                    </div>
+                    
+                    <div class="example-item">
+                        <div class="example-title">Example 3: Short-term Investment</div>
+                        <div class="example-details">
+                            Principal: ₹50,000 | Rate: 6% p.a. | Time: 6 months (0.5 years)<br>
+                            Simple Interest = (50,000 × 6 × 0.5) / 100 = ₹1,500<br>
+                            Total Amount = ₹50,000 + ₹1,500 = ₹51,500
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="banking.js"></script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize banking system
+            try {
+                initBanking();
+                console.log("Banking system initialized successfully");
+            } catch (error) {
+                console.error("Failed to initialize banking system:", error);
+            }
+        });
+
+        // Format currency
+        function formatAmount(amount) {
+            return "₹" + amount.toLocaleString("en-IN", {minimumFractionDigits: 2});
+        }
+
+        // Basic Calculator
+        document.getElementById('basicCalculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const time = parseFloat(document.getElementById('time').value);
+            
+            if (!principal || !rate || !time) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const simpleInterest = (principal * rate * time) / 100;
+            const totalAmount = principal + simpleInterest;
+            
+            // Update result display
+            document.getElementById('resultPrincipal').textContent = formatAmount(principal);
+            document.getElementById('resultRate').textContent = rate + '%';
+            document.getElementById('resultTime').textContent = time + ' years';
+            document.getElementById('resultInterest').textContent = formatAmount(simpleInterest);
+            document.getElementById('resultTotal').textContent = formatAmount(totalAmount);
+            
+            // Show result
+            document.getElementById('basicResult').style.display = 'block';
+        });
+
+        // Account-Based Calculator
+        document.getElementById('accountCalculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const accountType = document.getElementById('accountType').value;
+            const balance = parseFloat(document.getElementById('accountBalance').value);
+            const timeMonths = parseInt(document.getElementById('accountTime').value);
+            
+            if (!balance || !timeMonths) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Get interest rate based on account type
+            let rate;
+            let accountName;
+            switch(accountType) {
+                case 'savings':
+                    rate = 4.5;
+                    accountName = 'Savings Account';
+                    break;
+                case 'current':
+                    rate = 2.0;
+                    accountName = 'Current Account';
+                    break;
+                case 'fd':
+                    rate = 7.5;
+                    accountName = 'Fixed Deposit';
+                    break;
+            }
+            
+            const timeYears = timeMonths / 12;
+            const simpleInterest = (balance * rate * timeYears) / 100;
+            const totalAmount = balance + simpleInterest;
+            
+            // Update result display
+            document.getElementById('resultAccountType').textContent = accountName;
+            document.getElementById('resultAccountRate').textContent = rate + '%';
+            document.getElementById('resultAccountTime').textContent = timeMonths + ' months';
+            document.getElementById('resultAccountInterest').textContent = formatAmount(simpleInterest);
+            document.getElementById('resultAccountTotal').textContent = formatAmount(totalAmount);
+            
+            // Show result
+            document.getElementById('accountResult').style.display = 'block';
+        });
+
+        // Auto-fill account balance from actual accounts
+        document.getElementById('accountType').addEventListener('change', function() {
+            const accountType = this.value;
+            if (accounts && accounts[accountType]) {
+                document.getElementById('accountBalance').value = accounts[accountType].balance;
+            }
+        });
+
+        // Initialize with current account balances
+        setTimeout(() => {
+            if (accounts && accounts.savings) {
+                document.getElementById('accountBalance').value = accounts.savings.balance;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

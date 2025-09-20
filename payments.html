@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - SecureBank Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">SB</div>
+                    <div class="logo-text">SecureBank</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-details">
+                        <h4>2303A52336</h4>
+                        <p>Premium Customer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts.html" class="nav-link">
+                            <div class="nav-icon">💰</div>
+                            Accounts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transactions.html" class="nav-link">
+                            <div class="nav-icon">💸</div>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payments.html" class="nav-link active">
+                            <div class="nav-icon">💳</div>
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <div class="nav-icon">📈</div>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="simple-interest.html" class="nav-link">
+                            <div class="nav-icon">🧮</div>
+                            Simple Interest
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">
+                <span>Payments</span>
+                <span>›</span>
+                <span>Payment Center</span>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search payments...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <button class="notifications-btn">
+                    <span>🔔</span>
+                    <div class="notification-badge"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Payment Center -->
+            <div class="transaction-center">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">💳</div>
+                        Payment Center
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="bill">Bill Payment</button>
+                    <button class="tab" data-tab="shopping">Shopping</button>
+                    <button class="tab" data-tab="fuel">Fuel</button>
+                    <button class="tab" data-tab="food">Food & Dining</button>
+                </div>
+
+                <div class="tab-content" id="billTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="billAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Bill Type</label>
+                        <select id="billType" class="form-select">
+                            <option value="electricity">Electricity</option>
+                            <option value="water">Water</option>
+                            <option value="gas">Gas</option>
+                            <option value="internet">Internet</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="insurance">Insurance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Bill Number</label>
+                        <input type="text" id="billNumber" class="form-input" placeholder="Enter bill number">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="billAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-warning" id="billBtn">Pay Bill</button>
+                </div>
+
+                <div class="tab-content hidden" id="shoppingTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="shoppingAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Merchant</label>
+                        <input type="text" id="shoppingMerchant" class="form-input" placeholder="Enter merchant name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select id="shoppingCategory" class="form-select">
+                            <option value="clothing">Clothing</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="books">Books</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="shoppingAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-primary" id="shoppingBtn">Make Payment</button>
+                </div>
+
+                <div class="tab-content hidden" id="fuelTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="fuelAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fuel Station</label>
+                        <input type="text" id="fuelStation" class="form-input" placeholder="Enter fuel station name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fuel Type</label>
+                        <select id="fuelType" class="form-select">
+                            <option value="petrol">Petrol</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="cng">CNG</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="fuelAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-success" id="fuelBtn">Pay for Fuel</button>
+                </div>
+
+                <div class="tab-content hidden" id="foodTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="foodAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Restaurant/Food Service</label>
+                        <input type="text" id="foodMerchant" class="form-input" placeholder="Enter restaurant name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Order Type</label>
+                        <select id="foodOrderType" class="form-select">
+                            <option value="dine-in">Dine In</option>
+                            <option value="takeaway">Takeaway</option>
+                            <option value="delivery">Delivery</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="foodAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-accent" id="foodBtn">Pay for Food</button>
+                </div>
+            </div>
+
+            <!-- Quick Payment Options -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">⚡</div>
+                        Quick Payment Options
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Frequent Payments</h3>
+                        <div class="quick-payments">
+                            <button class="quick-payment-btn" data-type="electricity" data-amount="2500">
+                                <span class="payment-icon">⚡</span>
+                                <span>Electricity Bill</span>
+                                <span>₹2,500</span>
+                            </button>
+                            <button class="quick-payment-btn" data-type="water" data-amount="800">
+                                <span class="payment-icon">💧</span>
+                                <span>Water Bill</span>
+                                <span>₹800</span>
+                            </button>
+                            <button class="quick-payment-btn" data-type="internet" data-amount="1200">
+                                <span class="payment-icon">🌐</span>
+                                <span>Internet Bill</span>
+                                <span>₹1,200</span>
+                            </button>
+                            <button class="quick-payment-btn" data-type="mobile" data-amount="500">
+                                <span class="payment-icon">📱</span>
+                                <span>Mobile Bill</span>
+                                <span>₹500</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Payment Methods</h3>
+                        <div class="payment-methods">
+                            <div class="method-item">
+                                <span class="method-icon">💳</span>
+                                <span>Credit Card</span>
+                                <span class="method-status">Active</span>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">🏦</span>
+                                <span>Bank Transfer</span>
+                                <span class="method-status">Active</span>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">📱</span>
+                                <span>UPI</span>
+                                <span class="method-status">Active</span>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">💰</span>
+                                <span>Wallet</span>
+                                <span class="method-status">Inactive</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Payment Limits</h3>
+                        <div class="payment-limits">
+                            <div class="limit-item">
+                                <span>Daily Limit:</span>
+                                <span>₹50,000</span>
+                            </div>
+                            <div class="limit-item">
+                                <span>Monthly Limit:</span>
+                                <span>₹5,00,000</span>
+                            </div>
+                            <div class="limit-item">
+                                <span>Single Transaction:</span>
+                                <span>₹25,000</span>
+                            </div>
+                            <div class="limit-item">
+                                <span>Used Today:</span>
+                                <span id="usedToday">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment History -->
+            <div class="recent-activity">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📜</div>
+                        Payment History
+                    </div>
+                </div>
+                <div class="transactions-container" id="paymentsList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- JavaScript -->
+    <script src="banking.js"></script>
+    <script>
+        // Initialize banking system
+        initBanking();
+
+        // Tab switching
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+                tab.classList.add("active");
+                document.getElementById(tab.dataset.tab + "Tab").classList.remove("hidden");
+            });
+        });
+
+        // Payment actions
+        document.getElementById("billBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("billAccount").value;
+            const billType = document.getElementById("billType").value;
+            const billNumber = document.getElementById("billNumber").value;
+            const amount = parseFloat(document.getElementById("billAmount").value);
+            
+            const validation = validateAmount(amount, 0, accounts[accountType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const description = `${billType.charAt(0).toUpperCase() + billType.slice(1)} Bill Payment - ${billNumber}`;
+                const command = new WithdrawCommand(accounts[accountType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderPayments();
+                    updateAnalytics();
+                    showNotification("success", `Bill payment of ${formatAmount(amount)} successful`);
+                    clearPaymentForm('bill');
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        document.getElementById("shoppingBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("shoppingAccount").value;
+            const merchant = document.getElementById("shoppingMerchant").value;
+            const category = document.getElementById("shoppingCategory").value;
+            const amount = parseFloat(document.getElementById("shoppingAmount").value);
+            
+            const validation = validateAmount(amount, 0, accounts[accountType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const description = `Shopping - ${merchant} (${category})`;
+                const command = new WithdrawCommand(accounts[accountType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderPayments();
+                    updateAnalytics();
+                    showNotification("success", `Payment of ${formatAmount(amount)} to ${merchant} successful`);
+                    clearPaymentForm('shopping');
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        document.getElementById("fuelBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("fuelAccount").value;
+            const station = document.getElementById("fuelStation").value;
+            const fuelType = document.getElementById("fuelType").value;
+            const amount = parseFloat(document.getElementById("fuelAmount").value);
+            
+            const validation = validateAmount(amount, 0, accounts[accountType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const description = `Fuel Payment - ${station} (${fuelType})`;
+                const command = new WithdrawCommand(accounts[accountType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderPayments();
+                    updateAnalytics();
+                    showNotification("success", `Fuel payment of ${formatAmount(amount)} successful`);
+                    clearPaymentForm('fuel');
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        document.getElementById("foodBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("foodAccount").value;
+            const merchant = document.getElementById("foodMerchant").value;
+            const orderType = document.getElementById("foodOrderType").value;
+            const amount = parseFloat(document.getElementById("foodAmount").value);
+            
+            const validation = validateAmount(amount, 0, accounts[accountType].balance);
+            if (!validation.valid) {
+                showNotification("error", validation.message || "Insufficient balance!");
+                return;
+            }
+
+            try {
+                const description = `Food Payment - ${merchant} (${orderType})`;
+                const command = new WithdrawCommand(accounts[accountType], amount, description);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    renderPayments();
+                    updateAnalytics();
+                    showNotification("success", `Food payment of ${formatAmount(amount)} successful`);
+                    clearPaymentForm('food');
+                }
+            } catch (error) {
+                showNotification("error", error.message);
+            }
+        });
+
+        // Quick payment buttons
+        document.querySelectorAll('.quick-payment-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+                const amount = parseFloat(btn.dataset.amount);
+                
+                // Auto-fill the appropriate form
+                if (type === 'electricity' || type === 'water' || type === 'internet' || type === 'mobile') {
+                    document.getElementById('billType').value = type;
+                    document.getElementById('billAmount').value = amount;
+                    document.querySelector('[data-tab="bill"]').click();
+                }
+            });
+        });
+
+        // Clear payment forms
+        function clearPaymentForm(type) {
+            const forms = {
+                bill: ['billNumber', 'billAmount'],
+                shopping: ['shoppingMerchant', 'shoppingAmount'],
+                fuel: ['fuelStation', 'fuelAmount'],
+                food: ['foodMerchant', 'foodAmount']
+            };
+            
+            forms[type].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) element.value = '';
+            });
+        }
+
+        // Render payments (filtered transactions)
+        function renderPayments() {
+            const paymentsList = document.getElementById("paymentsList");
+            if (!paymentsList) return;
+            
+            let allTransactions = getAllTransactions();
+            let filteredTransactions = allTransactions.filter(tx => 
+                tx.type === 'withdraw' && (
+                    tx.description.toLowerCase().includes('payment') ||
+                    tx.description.toLowerCase().includes('bill') ||
+                    tx.description.toLowerCase().includes('shopping') ||
+                    tx.description.toLowerCase().includes('fuel') ||
+                    tx.description.toLowerCase().includes('food')
+                )
+            );
+            
+            // Apply search filter
+            const searchInput = document.querySelector(".search-input");
+            if (searchInput && searchInput.value.trim()) {
+                const searchTerm = searchInput.value.toLowerCase();
+                filteredTransactions = filteredTransactions.filter(t => 
+                    t.description.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            paymentsList.innerHTML = "";
+            
+            if (filteredTransactions.length === 0) {
+                paymentsList.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--gray-500);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">💳</div>
+                        <div>No payments found</div>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredTransactions.forEach(transaction => {
+                const transactionElement = document.createElement("div");
+                transactionElement.className = "transaction fade-in";
+                transactionElement.innerHTML = `
+                    <div class="transaction-icon payment">
+                        💳
+                    </div>
+                    <div class="transaction-details">
+                        <div class="transaction-title">${transaction.description}</div>
+                        <div class="transaction-subtitle">Payment Transaction</div>
+                        <div class="transaction-meta">
+                            <span>${transaction.timestamp.toLocaleString()}</span>
+                            <span>•</span>
+                            <span>Balance: ${formatAmount(transaction.balance)}</span>
+                        </div>
+                    </div>
+                    <div class="transaction-amount">
+                        <div class="transaction-value negative">
+                            -${formatAmount(transaction.amount)}
+                        </div>
+                        <div class="transaction-status status-completed">completed</div>
+                    </div>
+                `;
+                paymentsList.appendChild(transactionElement);
+            });
+        }
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => {
+                renderPayments();
+            });
+        }
+
+        // Initialize page
+        renderPayments();
+        
+        // Update payments periodically
+        setInterval(() => {
+            renderPayments();
+        }, 5000);
+    </script>
+
+    <style>
+        .quick-payments {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quick-payment-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-payment-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .payment-icon {
+            font-size: 1.25rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .method-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+
+        .method-icon {
+            font-size: 1.25rem;
+        }
+
+        .method-status {
+            margin-left: auto;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .method-status:contains("Active") {
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--accent);
+        }
+
+        .method-status:contains("Inactive") {
+            background: rgba(107, 114, 128, 0.1);
+            color: var(--gray-500);
+        }
+
+        .payment-limits {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .limit-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .limit-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</body>
+</html>

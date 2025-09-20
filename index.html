@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SecureBank Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">SB</div>
+                    <div class="logo-text">SecureBank</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-details">
+                        <h4>2303A52336</h4>
+                        <p>Premium Customer</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts.html" class="nav-link">
+                            <div class="nav-icon">💰</div>
+                            Accounts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transactions.html" class="nav-link">
+                            <div class="nav-icon">💸</div>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payments.html" class="nav-link">
+                            <div class="nav-icon">💳</div>
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <div class="nav-icon">📈</div>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="simple-interest.html" class="nav-link">
+                            <div class="nav-icon">🧮</div>
+                            Simple Interest
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <span>›</span>
+                <span>Banking Overview</span>
+                    </div>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search transactions, accounts...">
+                    <div class="search-icon">🔍</div>
+                </div>
+
+                <button class="notifications-btn">
+                    <span>🔔</span>
+                    <div class="notification-badge"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="account-cards-container">
+                <div class="account-cards">
+                <div class="account-card" data-account="savings">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-type">Savings Account</div>
+                            <div class="account-balance" id="savingsBalance">₹2,45,750.00</div>
+                            <div class="account-change">
+                                <span>📈</span>
+                                <span>+₹15,200 this month</span>
+                            </div>
+                            <div class="account-interest" id="savingsInterest">
+                                <span>💰</span>
+                                <span>Interest: ₹11,058.75/year</span>
+                            </div>
+                        </div>
+                        <button class="account-menu">⋯</button>
+                    </div>
+                    <div class="account-details">
+                        <div class="account-number">****4589</div>
+                        <div class="account-status">Active</div>
+                    </div>
+                </div>
+
+                <div class="account-card" data-account="current" style="background: linear-gradient(135deg, var(--accent) 0%, #047857 100%);">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-type">Current Account</div>
+                            <div class="account-balance" id="currentBalance">₹85,420.00</div>
+                            <div class="account-change">
+                                <span>📉</span>
+                                <span>-₹5,800 this month</span>
+                            </div>
+                            <div class="account-interest" id="currentInterest">
+                                <span>💰</span>
+                                <span>Interest: ₹1,708.40/year</span>
+                            </div>
+                        </div>
+                        <button class="account-menu">⋯</button>
+                    </div>
+                    <div class="account-details">
+                        <div class="account-number">****9210</div>
+                        <div class="account-status">Active</div>
+                    </div>
+                </div>
+
+                <div class="account-card" data-account="fd" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-type">Fixed Deposit</div>
+                            <div class="account-balance" id="fdBalance">₹4,00,000.00</div>
+                            <div class="account-change">
+                                <span>💹</span>
+                                <span>+₹2,000 interest</span>
+                            </div>
+                            <div class="account-interest" id="fdInterest">
+                                <span>💰</span>
+                                <span>Interest: ₹30,000.00/year</span>
+                            </div>
+                        </div>
+                        <button class="account-menu">⋯</button>
+                    </div>
+                    <div class="account-details">
+                        <div class="account-number">****3344</div>
+                        <div class="account-status">Active</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Transaction Center -->
+            <div class="transaction-center">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">💸</div>
+                        Transaction Center
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="deposit">Deposit</button>
+                    <button class="tab" data-tab="withdraw">Withdraw</button>
+                    <button class="tab" data-tab="transfer">Transfer</button>
+                    <button class="tab" data-tab="payment">Payment</button>
+                </div>
+
+                <div class="tab-content" id="depositTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="depositAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="depositAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-success" id="depositBtn">Deposit</button>
+                </div>
+
+                <div class="tab-content hidden" id="withdrawTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="withdrawAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="withdrawAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-danger" id="withdrawBtn">Withdraw</button>
+                </div>
+
+                <div class="tab-content hidden" id="transferTab">
+                    <div class="form-group">
+                        <label class="form-label">From Account</label>
+                        <select id="transferFrom" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">To Account</label>
+                        <select id="transferTo" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="transferAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <button class="btn btn-primary" id="transferBtn">Transfer</button>
+                </div>
+
+                <div class="tab-content hidden" id="paymentTab">
+                    <div class="form-group">
+                        <label class="form-label">Select Account</label>
+                        <select id="paymentAccount" class="form-select">
+                            <option value="savings">Savings</option>
+                            <option value="current">Current</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Payment Type</label>
+                        <select id="paymentType" class="form-select">
+                            <option value="bill">Bill Payment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="fuel">Fuel</option>
+                            <option value="food">Food & Dining</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-prefix">₹</span>
+                        <input type="number" id="paymentAmount" class="form-input" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" id="paymentDescription" class="form-input" placeholder="Enter payment description">
+                    </div>
+                    <button class="btn btn-warning" id="paymentBtn">Make Payment</button>
+                </div>
+            </div>
+
+            <!-- Analytics Dashboard -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📈</div>
+                        Analytics Dashboard
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Monthly Spending</h3>
+                            <span class="analytics-value" id="monthlySpending">₹0</span>
+                        </div>
+                        <div class="analytics-chart" id="spendingChart">
+                            <div class="chart-bar" style="height: 20%"></div>
+                            <div class="chart-bar" style="height: 40%"></div>
+                            <div class="chart-bar" style="height: 60%"></div>
+                            <div class="chart-bar" style="height: 30%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                            <div class="chart-bar" style="height: 50%"></div>
+                            <div class="chart-bar" style="height: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Account Distribution</h3>
+                        </div>
+                        <div class="account-distribution">
+                            <div class="distribution-item">
+                                <div class="distribution-label">Savings</div>
+                                <div class="distribution-bar">
+                                    <div class="distribution-fill" style="width: 70%" data-account="savings"></div>
+                                </div>
+                                <div class="distribution-percentage" id="savingsPercent">70%</div>
+                            </div>
+                            <div class="distribution-item">
+                                <div class="distribution-label">Current</div>
+                                <div class="distribution-bar">
+                                    <div class="distribution-fill" style="width: 20%" data-account="current"></div>
+                                </div>
+                                <div class="distribution-percentage" id="currentPercent">20%</div>
+                            </div>
+                            <div class="distribution-item">
+                                <div class="distribution-label">Fixed Deposit</div>
+                                <div class="distribution-bar">
+                                    <div class="distribution-fill" style="width: 10%" data-account="fd"></div>
+                                </div>
+                                <div class="distribution-percentage" id="fdPercent">10%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Quick Stats</h3>
+                        </div>
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">💰</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="totalBalance">₹0</div>
+                                    <div class="stat-label">Total Balance</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">📊</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="transactionCount">0</div>
+                                    <div class="stat-label">Transactions</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">📈</div>
+                                <div class="stat-content">
+                                    <div class="stat-value" id="monthlyGrowth">+0%</div>
+                                    <div class="stat-label">Growth</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📜</div>
+                        Recent Activity
+                    </div>
+                </div>
+                <div class="transactions-container" id="transactionsList"></div>
+        </div>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- JavaScript -->
+    <script src="banking.js"></script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize banking system
+            try {
+        initBanking();
+                console.log("Banking system initialized successfully");
+            } catch (error) {
+                console.error("Failed to initialize banking system:", error);
+                showNotification("error", "Failed to initialize banking system");
+            }
+        });
+
+        // Update interest displays immediately
+        function updateInterestDisplays() {
+            try {
+                if (!accounts || !accounts.savings) {
+                    console.log("Accounts not initialized yet");
+                    return;
+                }
+                
+                const savingsInterest = accounts.savings.calculateInterest();
+                const currentInterest = accounts.current.calculateInterest();
+                const fdInterest = accounts.fd.calculateInterest();
+                
+                const savingsElement = document.getElementById("savingsInterest");
+                const currentElement = document.getElementById("currentInterest");
+                const fdElement = document.getElementById("fdInterest");
+                
+                if (savingsElement) {
+                    savingsElement.innerHTML = `
+                        <span>💰</span>
+                        <span>Interest: ${formatAmount(savingsInterest)}/year</span>
+                    `;
+                }
+                
+                if (currentElement) {
+                    currentElement.innerHTML = `
+                        <span>💰</span>
+                        <span>Interest: ${formatAmount(currentInterest)}/year</span>
+                    `;
+                }
+                
+                if (fdElement) {
+                    fdElement.innerHTML = `
+                        <span>💰</span>
+                        <span>Interest: ${formatAmount(fdInterest)}/year</span>
+                    `;
+                }
+            } catch (error) {
+                console.error("Error updating interest displays:", error);
+            }
+        }
+
+        // Update interest displays after initialization
+        setTimeout(() => {
+            updateInterestDisplays();
+        }, 500);
+
+        // Tab switching
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+                tab.classList.add("active");
+                document.getElementById(tab.dataset.tab + "Tab").classList.remove("hidden");
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => {
+                renderTransactions();
+            });
+        }
+
+        // Filter functionality
+        function addFilterChips() {
+            const activitySection = document.querySelector(".recent-activity .section-header");
+            if (!activitySection) return;
+            
+            const filtersContainer = document.createElement("div");
+            filtersContainer.className = "activity-filters";
+            filtersContainer.innerHTML = `
+                <div class="filter-chip ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">All</div>
+                <div class="filter-chip ${currentFilter === 'deposit' ? 'active' : ''}" data-filter="deposit">Deposits</div>
+                <div class="filter-chip ${currentFilter === 'withdraw' ? 'active' : ''}" data-filter="withdraw">Withdrawals</div>
+                <div class="filter-chip ${currentFilter === 'transfer' ? 'active' : ''}" data-filter="transfer">Transfers</div>
+                <div class="filter-chip ${currentFilter === 'payment' ? 'active' : ''}" data-filter="payment">Payments</div>
+            `;
+            
+            activitySection.appendChild(filtersContainer);
+            
+            filtersContainer.querySelectorAll(".filter-chip").forEach(chip => {
+                chip.addEventListener("click", () => {
+                    currentFilter = chip.dataset.filter;
+                    filtersContainer.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+                    chip.classList.add("active");
+                    renderTransactions();
+                });
+            });
+        }
+
+        // Transaction actions using Command Pattern
+        document.getElementById("depositBtn").addEventListener("click", () => {
+            try {
+                const accountType = document.getElementById("depositAccount").value;
+                const amount = parseFloat(document.getElementById("depositAmount").value);
+                
+                if (!amount || amount <= 0) {
+                    showNotification("error", "Please enter a valid amount");
+                    return;
+                }
+                
+                const validation = validateAmount(amount, 0, 1000000);
+                if (!validation.valid) {
+                    showNotification("error", validation.message);
+                    return;
+                }
+
+                const command = new DepositCommand(accounts[accountType], amount, `Deposit to ${accountType} account`);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    updateInterestDisplays();
+                    renderTransactions();
+                    updateAnalytics();
+                    showNotification("success", `Deposited ${formatAmount(amount)} to ${accountType} account`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                console.error("Deposit error:", error);
+                showNotification("error", error.message || "Transaction failed");
+            }
+        });
+
+        document.getElementById("withdrawBtn").addEventListener("click", () => {
+            try {
+                const accountType = document.getElementById("withdrawAccount").value;
+                const amount = parseFloat(document.getElementById("withdrawAmount").value);
+                
+                if (!amount || amount <= 0) {
+                    showNotification("error", "Please enter a valid amount");
+                    return;
+                }
+                
+                const validation = validateAmount(amount, 0, accounts[accountType].balance);
+                if (!validation.valid) {
+                    showNotification("error", validation.message || "Insufficient balance!");
+                    return;
+                }
+
+                const command = new WithdrawCommand(accounts[accountType], amount, `Withdrawal from ${accountType} account`);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    updateInterestDisplays();
+                    renderTransactions();
+                    updateAnalytics();
+                    showNotification("info", `Withdrew ${formatAmount(amount)} from ${accountType} account`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                console.error("Withdraw error:", error);
+                showNotification("error", error.message || "Transaction failed");
+            }
+        });
+
+        document.getElementById("transferBtn").addEventListener("click", () => {
+            try {
+                const fromType = document.getElementById("transferFrom").value;
+                const toType = document.getElementById("transferTo").value;
+                const amount = parseFloat(document.getElementById("transferAmount").value);
+                
+                if (!amount || amount <= 0) {
+                    showNotification("error", "Please enter a valid amount");
+                    return;
+                }
+                
+                if (fromType === toType) {
+                    showNotification("error", "Cannot transfer to the same account!");
+                    return;
+                }
+
+                const validation = validateAmount(amount, 0, accounts[fromType].balance);
+                if (!validation.valid) {
+                    showNotification("error", validation.message || "Insufficient balance!");
+                    return;
+                }
+
+                const command = new TransferCommand(accounts[fromType], accounts[toType], amount, `Transfer from ${fromType} to ${toType}`);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    updateInterestDisplays();
+                    renderTransactions();
+                    updateAnalytics();
+                    showNotification("success", `Transferred ${formatAmount(amount)} from ${fromType} to ${toType}`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                console.error("Transfer error:", error);
+                showNotification("error", error.message || "Transaction failed");
+            }
+        });
+
+        document.getElementById("paymentBtn").addEventListener("click", () => {
+            try {
+                const accountType = document.getElementById("paymentAccount").value;
+                const amount = parseFloat(document.getElementById("paymentAmount").value);
+                const paymentType = document.getElementById("paymentType").value;
+                const description = document.getElementById("paymentDescription").value;
+                
+                if (!amount || amount <= 0) {
+                    showNotification("error", "Please enter a valid amount");
+                    return;
+                }
+                
+                const validation = validateAmount(amount, 0, accounts[accountType].balance);
+                if (!validation.valid) {
+                    showNotification("error", validation.message || "Insufficient balance!");
+                    return;
+                }
+
+                const paymentDescription = description || `${paymentType.charAt(0).toUpperCase() + paymentType.slice(1)} Payment`;
+                const command = new WithdrawCommand(accounts[accountType], amount, paymentDescription);
+                const success = commandInvoker.executeCommand(command);
+                
+                if (success) {
+                    updateBalances();
+                    updateInterestDisplays();
+                    renderTransactions();
+                    updateAnalytics();
+                    showNotification("warning", `Payment of ${formatAmount(amount)} made from ${accountType} account`);
+                    clearFormInputs();
+                }
+            } catch (error) {
+                console.error("Payment error:", error);
+                showNotification("error", error.message || "Transaction failed");
+            }
+        });
+
+        // Add undo button
+        function addUndoButton() {
+            const headerActions = document.querySelector('.header-actions');
+            const undoButton = document.createElement('button');
+            undoButton.innerHTML = '↶ Undo';
+            undoButton.className = 'btn btn-outline';
+            undoButton.style.marginRight = '1rem';
+            undoButton.addEventListener('click', () => {
+                try {
+                    commandInvoker.undoLastCommand();
+                    updateBalances();
+                    updateInterestDisplays();
+                    renderTransactions();
+                    updateAnalytics();
+                    showNotification('info', 'Last transaction undone');
+                } catch (error) {
+                    showNotification('error', error.message);
+                }
+            });
+            headerActions.insertBefore(undoButton, headerActions.firstChild);
+        }
+
+        // Initialize page
+        setTimeout(() => {
+            addFilterChips();
+            addUndoButton();
+            
+            // Debug: Check if all elements exist
+            console.log("Checking elements:");
+            console.log("Deposit button:", document.getElementById("depositBtn"));
+            console.log("Withdraw button:", document.getElementById("withdrawBtn"));
+            console.log("Transfer button:", document.getElementById("transferBtn"));
+            console.log("Payment button:", document.getElementById("paymentBtn"));
+            console.log("Accounts:", accounts);
+            console.log("Command invoker:", commandInvoker);
+        }, 1000);
+    </script>
+</body>
+</html>

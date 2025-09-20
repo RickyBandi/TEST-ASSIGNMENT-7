@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts - SecureBank Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">SB</div>
+                    <div class="logo-text">SecureBank</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-details">
+                        <h4>2303A52336</h4>
+                        <p>Premium Customer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts.html" class="nav-link active">
+                            <div class="nav-icon">💰</div>
+                            Accounts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transactions.html" class="nav-link">
+                            <div class="nav-icon">💸</div>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payments.html" class="nav-link">
+                            <div class="nav-icon">💳</div>
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <div class="nav-icon">📈</div>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="simple-interest.html" class="nav-link">
+                            <div class="nav-icon">🧮</div>
+                            Simple Interest
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">
+                <span>Accounts</span>
+                <span>›</span>
+                <span>Account Management</span>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search accounts...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <button class="notifications-btn">
+                    <span>🔔</span>
+                    <div class="notification-badge"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Account Cards -->
+            <div class="account-cards-container">
+                <div class="account-cards">
+                <div class="account-card" data-account="savings">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-type">Savings Account</div>
+                            <div class="account-balance" id="savingsBalance">₹2,45,750.00</div>
+                            <div class="account-change">
+                                <span>📈</span>
+                                <span>+₹15,200 this month</span>
+                            </div>
+                            <div class="account-interest" id="savingsInterest">
+                                <span>💰</span>
+                                <span>Interest: ₹11,058.75/year</span>
+                            </div>
+                        </div>
+                        <button class="account-menu">⋯</button>
+                    </div>
+                    <div class="account-details">
+                        <div class="account-number">****4589</div>
+                        <div class="account-status">Active</div>
+                    </div>
+                </div>
+
+                <div class="account-card" data-account="current" style="background: linear-gradient(135deg, var(--accent) 0%, #047857 100%);">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-type">Current Account</div>
+                            <div class="account-balance" id="currentBalance">₹85,420.00</div>
+                            <div class="account-change">
+                                <span>📉</span>
+                                <span>-₹5,800 this month</span>
+                            </div>
+                            <div class="account-interest" id="currentInterest">
+                                <span>💰</span>
+                                <span>Interest: ₹1,708.40/year</span>
+                            </div>
+                        </div>
+                        <button class="account-menu">⋯</button>
+                    </div>
+                    <div class="account-details">
+                        <div class="account-number">****9210</div>
+                        <div class="account-status">Active</div>
+                    </div>
+                </div>
+
+                <div class="account-card" data-account="fd" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-type">Fixed Deposit</div>
+                            <div class="account-balance" id="fdBalance">₹4,00,000.00</div>
+                            <div class="account-change">
+                                <span>💹</span>
+                                <span>+₹2,000 interest</span>
+                            </div>
+                            <div class="account-interest" id="fdInterest">
+                                <span>💰</span>
+                                <span>Interest: ₹30,000.00/year</span>
+                            </div>
+                        </div>
+                        <button class="account-menu">⋯</button>
+                    </div>
+                    <div class="account-details">
+                        <div class="account-number">****3344</div>
+                        <div class="account-status">Active</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Account Details Section -->
+            <div class="account-details-section">
+                <div class="account-details-grid">
+                    <div class="account-detail-card">
+                        <h3>Savings Account Details</h3>
+                        <div class="detail-item">
+                            <span>Account Number:</span>
+                            <span id="savingsAccountNumber">****4589</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Balance:</span>
+                            <span id="savingsDetailBalance">₹2,45,750.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Interest Rate:</span>
+                            <span id="savingsInterestRate">4.5% p.a.</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Annual Interest:</span>
+                            <span id="savingsAnnualInterest">₹11,058.75</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Account Type:</span>
+                            <span>Personal Savings</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Opening Date:</span>
+                            <span>Jan 15, 2020</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-detail-card">
+                        <h3>Current Account Details</h3>
+                        <div class="detail-item">
+                            <span>Account Number:</span>
+                            <span id="currentAccountNumber">****9210</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Balance:</span>
+                            <span id="currentDetailBalance">₹85,420.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Interest Rate:</span>
+                            <span id="currentInterestRate">2.0% p.a.</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Annual Interest:</span>
+                            <span id="currentAnnualInterest">₹1,708.40</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Account Type:</span>
+                            <span>Business Current</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Opening Date:</span>
+                            <span>Mar 10, 2021</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-detail-card">
+                        <h3>Fixed Deposit Details</h3>
+                        <div class="detail-item">
+                            <span>Account Number:</span>
+                            <span id="fdAccountNumber">****3344</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Balance:</span>
+                            <span id="fdDetailBalance">₹4,00,000.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Interest Rate:</span>
+                            <span id="fdInterestRate">7.5% p.a.</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Tenure:</span>
+                            <span id="fdTenure">12 months</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Maturity Interest:</span>
+                            <span id="fdMaturityInterest">₹30,000.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Maturity Date:</span>
+                            <span id="fdMaturityDate">Dec 15, 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interest Calculator -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">🧮</div>
+                        Interest Calculator
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Simple Interest Calculation</h3>
+                        </div>
+                        <div class="interest-calculator">
+                            <div class="form-group">
+                                <label class="form-label">Select Account</label>
+                                <select id="interestAccount" class="form-select">
+                                    <option value="savings">Savings Account (4.5%)</option>
+                                    <option value="current">Current Account (2.0%)</option>
+                                    <option value="fd">Fixed Deposit (7.5%)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Time Period (Months)</label>
+                                <input type="number" id="interestTime" class="form-input" value="12" min="1" max="60">
+                            </div>
+                            <button class="btn btn-primary" id="calculateInterestBtn">Calculate Interest</button>
+                            <div id="interestResult" class="interest-result"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Account Summary</h3>
+                        </div>
+                        <div class="account-summary">
+                            <div class="summary-item">
+                                <span>Total Balance:</span>
+                                <span id="totalAccountBalance">₹7,31,170.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Total Annual Interest:</span>
+                                <span id="totalAnnualInterest">₹42,767.15</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Average Interest Rate:</span>
+                                <span id="averageInterestRate">5.85%</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Active Accounts:</span>
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Interest Comparison</h3>
+                        </div>
+                        <div class="interest-comparison">
+                            <div class="comparison-item">
+                                <span>Savings vs Current:</span>
+                                <span id="savingsVsCurrent">+2.5%</span>
+                            </div>
+                            <div class="comparison-item">
+                                <span>FD vs Savings:</span>
+                                <span id="fdVsSavings">+3.0%</span>
+                            </div>
+                            <div class="comparison-item">
+                                <span>FD vs Current:</span>
+                                <span id="fdVsCurrent">+5.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📜</div>
+                        Recent Account Activity
+                    </div>
+                </div>
+                <div class="transactions-container" id="transactionsList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- JavaScript -->
+    <script src="banking.js"></script>
+    <script>
+        // Initialize banking system
+        initBanking();
+
+        // Update interest displays immediately
+        function updateInterestDisplays() {
+            const savingsInterest = accounts.savings.calculateInterest();
+            const currentInterest = accounts.current.calculateInterest();
+            const fdInterest = accounts.fd.calculateInterest();
+            
+            document.getElementById("savingsInterest").innerHTML = `
+                <span>💰</span>
+                <span>Interest: ${formatAmount(savingsInterest)}/year</span>
+            `;
+            
+            document.getElementById("currentInterest").innerHTML = `
+                <span>💰</span>
+                <span>Interest: ${formatAmount(currentInterest)}/year</span>
+            `;
+            
+            document.getElementById("fdInterest").innerHTML = `
+                <span>💰</span>
+                <span>Interest: ${formatAmount(fdInterest)}/year</span>
+            `;
+        }
+
+        // Update interest displays after initialization
+        setTimeout(() => {
+            updateInterestDisplays();
+        }, 100);
+
+        // Update account details
+        function updateAccountDetails() {
+            document.getElementById("savingsAccountNumber").textContent = accounts.savings.accountNumber;
+            document.getElementById("savingsDetailBalance").textContent = formatAmount(accounts.savings.balance);
+            document.getElementById("savingsInterestRate").textContent = `${accounts.savings.interestRate}% p.a.`;
+            document.getElementById("savingsAnnualInterest").textContent = formatAmount(accounts.savings.calculateInterest());
+
+            document.getElementById("currentAccountNumber").textContent = accounts.current.accountNumber;
+            document.getElementById("currentDetailBalance").textContent = formatAmount(accounts.current.balance);
+            document.getElementById("currentInterestRate").textContent = `${accounts.current.interestRate}% p.a.`;
+            document.getElementById("currentAnnualInterest").textContent = formatAmount(accounts.current.calculateInterest());
+
+            document.getElementById("fdAccountNumber").textContent = accounts.fd.accountNumber;
+            document.getElementById("fdDetailBalance").textContent = formatAmount(accounts.fd.balance);
+            document.getElementById("fdInterestRate").textContent = `${accounts.fd.interestRate}% p.a.`;
+            document.getElementById("fdTenure").textContent = `${accounts.fd.tenure} months`;
+            document.getElementById("fdMaturityInterest").textContent = formatAmount(accounts.fd.calculateInterest());
+
+            // Update summary
+            const totalBalance = accounts.savings.balance + accounts.current.balance + accounts.fd.balance;
+            const totalInterest = accounts.savings.calculateInterest() + accounts.current.calculateInterest() + accounts.fd.calculateInterest();
+            const averageRate = (totalInterest / totalBalance) * 100;
+
+            document.getElementById("totalAccountBalance").textContent = formatAmount(totalBalance);
+            document.getElementById("totalAnnualInterest").textContent = formatAmount(totalInterest);
+            document.getElementById("averageInterestRate").textContent = `${averageRate.toFixed(2)}%`;
+
+            // Update comparisons
+            document.getElementById("savingsVsCurrent").textContent = `+${(accounts.savings.interestRate - accounts.current.interestRate).toFixed(1)}%`;
+            document.getElementById("fdVsSavings").textContent = `+${(accounts.fd.interestRate - accounts.savings.interestRate).toFixed(1)}%`;
+            document.getElementById("fdVsCurrent").textContent = `+${(accounts.fd.interestRate - accounts.current.interestRate).toFixed(1)}%`;
+        }
+
+        // Interest calculator
+        document.getElementById("calculateInterestBtn").addEventListener("click", () => {
+            const accountType = document.getElementById("interestAccount").value;
+            const timeMonths = parseInt(document.getElementById("interestTime").value);
+            
+            const account = accounts[accountType];
+            const principal = account.balance;
+            const rate = account.interestRate;
+            const time = timeMonths / 12; // Convert to years
+            
+            const simpleInterest = (principal * rate * time) / 100;
+            const totalAmount = principal + simpleInterest;
+            
+            const result = document.getElementById("interestResult");
+            result.innerHTML = `
+                <div style="background: var(--gray-50); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
+                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Interest Calculation Result</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.875rem;">
+                        <div><strong>Principal:</strong> ${formatAmount(principal)}</div>
+                        <div><strong>Rate:</strong> ${rate}% p.a.</div>
+                        <div><strong>Time:</strong> ${timeMonths} months</div>
+                        <div><strong>Simple Interest:</strong> ${formatAmount(simpleInterest)}</div>
+                        <div style="grid-column: 1 / -1; border-top: 1px solid var(--gray-200); padding-top: 0.5rem; margin-top: 0.5rem;">
+                            <strong>Total Amount:</strong> ${formatAmount(totalAmount)}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => {
+                renderTransactions();
+            });
+        }
+
+        // Filter functionality
+        function addFilterChips() {
+            const activitySection = document.querySelector(".recent-activity .section-header");
+            if (!activitySection) return;
+            
+            const filtersContainer = document.createElement("div");
+            filtersContainer.className = "activity-filters";
+            filtersContainer.innerHTML = `
+                <div class="filter-chip ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">All</div>
+                <div class="filter-chip ${currentFilter === 'deposit' ? 'active' : ''}" data-filter="deposit">Deposits</div>
+                <div class="filter-chip ${currentFilter === 'withdraw' ? 'active' : ''}" data-filter="withdraw">Withdrawals</div>
+                <div class="filter-chip ${currentFilter === 'transfer' ? 'active' : ''}" data-filter="transfer">Transfers</div>
+                <div class="filter-chip ${currentFilter === 'payment' ? 'active' : ''}" data-filter="payment">Payments</div>
+            `;
+            
+            activitySection.appendChild(filtersContainer);
+            
+            filtersContainer.querySelectorAll(".filter-chip").forEach(chip => {
+                chip.addEventListener("click", () => {
+                    currentFilter = chip.dataset.filter;
+                    filtersContainer.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+                    chip.classList.add("active");
+                    renderTransactions();
+                });
+            });
+        }
+
+        // Initialize page
+        updateAccountDetails();
+        addFilterChips();
+        
+        // Update details when accounts change
+        setInterval(() => {
+            updateAccountDetails();
+        }, 1000);
+    </script>
+</body>
+</html>

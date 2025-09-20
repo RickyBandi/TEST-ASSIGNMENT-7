@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - SecureBank Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">SB</div>
+                    <div class="logo-text">SecureBank</div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-details">
+                        <h4>2303A52336</h4>
+                        <p>Premium Customer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <div class="nav-icon">📊</div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts.html" class="nav-link">
+                            <div class="nav-icon">💰</div>
+                            Accounts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="transactions.html" class="nav-link">
+                            <div class="nav-icon">💸</div>
+                            Transactions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payments.html" class="nav-link">
+                            <div class="nav-icon">💳</div>
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link active">
+                            <div class="nav-icon">📈</div>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="simple-interest.html" class="nav-link">
+                            <div class="nav-icon">🧮</div>
+                            Simple Interest
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <div class="nav-icon">⚙️</div>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">
+                <span>Analytics</span>
+                <span>›</span>
+                <span>Financial Analytics</span>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search analytics...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <button class="notifications-btn">
+                    <span>🔔</span>
+                    <div class="notification-badge"></div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Financial Overview -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📊</div>
+                        Financial Overview
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Total Balance</h3>
+                            <span class="analytics-value" id="totalBalance">₹0</span>
+                        </div>
+                        <div class="balance-breakdown">
+                            <div class="balance-item">
+                                <span>Savings:</span>
+                                <span id="savingsBalance">₹0</span>
+                            </div>
+                            <div class="balance-item">
+                                <span>Current:</span>
+                                <span id="currentBalance">₹0</span>
+                            </div>
+                            <div class="balance-item">
+                                <span>Fixed Deposit:</span>
+                                <span id="fdBalance">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Monthly Spending</h3>
+                            <span class="analytics-value" id="monthlySpending">₹0</span>
+                        </div>
+                        <div class="analytics-chart" id="spendingChart">
+                            <div class="chart-bar" style="height: 20%"></div>
+                            <div class="chart-bar" style="height: 40%"></div>
+                            <div class="chart-bar" style="height: 60%"></div>
+                            <div class="chart-bar" style="height: 30%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                            <div class="chart-bar" style="height: 50%"></div>
+                            <div class="chart-bar" style="height: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Account Distribution</h3>
+                        </div>
+                        <div class="account-distribution">
+                            <div class="distribution-item">
+                                <div class="distribution-label">Savings</div>
+                                <div class="distribution-bar">
+                                    <div class="distribution-fill" style="width: 70%" data-account="savings"></div>
+                                </div>
+                                <div class="distribution-percentage" id="savingsPercent">70%</div>
+                            </div>
+                            <div class="distribution-item">
+                                <div class="distribution-label">Current</div>
+                                <div class="distribution-bar">
+                                    <div class="distribution-fill" style="width: 20%" data-account="current"></div>
+                                </div>
+                                <div class="distribution-percentage" id="currentPercent">20%</div>
+                            </div>
+                            <div class="distribution-item">
+                                <div class="distribution-label">Fixed Deposit</div>
+                                <div class="distribution-bar">
+                                    <div class="distribution-fill" style="width: 10%" data-account="fd"></div>
+                                </div>
+                                <div class="distribution-percentage" id="fdPercent">10%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction Analytics -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📈</div>
+                        Transaction Analytics
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Transaction Volume</h3>
+                            <span class="analytics-value" id="transactionCount">0</span>
+                        </div>
+                        <div class="transaction-stats">
+                            <div class="stat-item">
+                                <span>Deposits:</span>
+                                <span id="depositCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Withdrawals:</span>
+                                <span id="withdrawCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Transfers:</span>
+                                <span id="transferCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Payments:</span>
+                                <span id="paymentCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Monthly Growth</h3>
+                            <span class="analytics-value" id="monthlyGrowth">+0%</span>
+                        </div>
+                        <div class="growth-stats">
+                            <div class="stat-item">
+                                <span>Income:</span>
+                                <span id="monthlyIncome">₹0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Expenses:</span>
+                                <span id="monthlyExpenses">₹0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Net Growth:</span>
+                                <span id="netGrowth">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Spending Categories</h3>
+                        </div>
+                        <div class="spending-categories">
+                            <div class="category-item">
+                                <span>Bills:</span>
+                                <span id="billsSpending">₹0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Shopping:</span>
+                                <span id="shoppingSpending">₹0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Food:</span>
+                                <span id="foodSpending">₹0</span>
+                            </div>
+                            <div class="category-item">
+                                <span>Fuel:</span>
+                                <span id="fuelSpending">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interest Analytics -->
+            <div class="analytics-dashboard">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">💰</div>
+                        Interest Analytics
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Annual Interest</h3>
+                            <span class="analytics-value" id="totalAnnualInterest">₹0</span>
+                        </div>
+                        <div class="interest-breakdown">
+                            <div class="interest-item">
+                                <span>Savings (4.5%):</span>
+                                <span id="savingsInterest">₹0</span>
+                            </div>
+                            <div class="interest-item">
+                                <span>Current (2.0%):</span>
+                                <span id="currentInterest">₹0</span>
+                            </div>
+                            <div class="interest-item">
+                                <span>FD (7.5%):</span>
+                                <span id="fdInterest">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Interest Rate Comparison</h3>
+                        </div>
+                        <div class="rate-comparison">
+                            <div class="rate-item">
+                                <span>Savings Rate:</span>
+                                <span class="rate-value">4.5%</span>
+                            </div>
+                            <div class="rate-item">
+                                <span>Current Rate:</span>
+                                <span class="rate-value">2.0%</span>
+                            </div>
+                            <div class="rate-item">
+                                <span>FD Rate:</span>
+                                <span class="rate-value">7.5%</span>
+                            </div>
+                            <div class="rate-item">
+                                <span>Average Rate:</span>
+                                <span class="rate-value" id="averageRate">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Interest Projection</h3>
+                        </div>
+                        <div class="interest-projection">
+                            <div class="projection-item">
+                                <span>Next Month:</span>
+                                <span id="nextMonthInterest">₹0</span>
+                            </div>
+                            <div class="projection-item">
+                                <span>Next Quarter:</span>
+                                <span id="nextQuarterInterest">₹0</span>
+                            </div>
+                            <div class="projection-item">
+                                <span>Next Year:</span>
+                                <span id="nextYearInterest">₹0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">📜</div>
+                        Recent Activity
+                    </div>
+                </div>
+                <div class="transactions-container" id="transactionsList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- JavaScript -->
+    <script src="banking.js"></script>
+    <script>
+        // Initialize banking system
+        initBanking();
+
+        // Update analytics
+        function updateAnalytics() {
+            updateTotalBalance();
+            updateAccountDistribution();
+            updateTransactionCount();
+            updateMonthlySpending();
+            updateMonthlyGrowth();
+            updateInterestCalculations();
+            updateTransactionAnalytics();
+            updateInterestAnalytics();
+        }
+
+        function updateTransactionAnalytics() {
+            const allTransactions = getAllTransactions();
+            
+            // Transaction counts
+            const depositCount = allTransactions.filter(tx => tx.type === 'deposit').length;
+            const withdrawCount = allTransactions.filter(tx => tx.type === 'withdraw').length;
+            const transferCount = allTransactions.filter(tx => tx.type === 'transfer').length;
+            const paymentCount = allTransactions.filter(tx => tx.type === 'payment').length;
+            
+            document.getElementById("depositCount").textContent = depositCount;
+            document.getElementById("withdrawCount").textContent = withdrawCount;
+            document.getElementById("transferCount").textContent = transferCount;
+            document.getElementById("paymentCount").textContent = paymentCount;
+            
+            // Monthly income and expenses
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            
+            const monthlyIncome = allTransactions
+                .filter(tx => {
+                    const txDate = new Date(tx.timestamp);
+                    return txDate.getMonth() === currentMonth && 
+                           txDate.getFullYear() === currentYear && 
+                           tx.type === 'deposit';
+                })
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            const monthlyExpenses = allTransactions
+                .filter(tx => {
+                    const txDate = new Date(tx.timestamp);
+                    return txDate.getMonth() === currentMonth && 
+                           txDate.getFullYear() === currentYear && 
+                           (tx.type === 'withdraw' || tx.type === 'payment');
+                })
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            const netGrowth = monthlyIncome - monthlyExpenses;
+            
+            document.getElementById("monthlyIncome").textContent = formatAmount(monthlyIncome);
+            document.getElementById("monthlyExpenses").textContent = formatAmount(monthlyExpenses);
+            document.getElementById("netGrowth").textContent = formatAmount(netGrowth);
+            
+            // Spending categories
+            const billsSpending = allTransactions
+                .filter(tx => tx.type === 'payment' && tx.description.toLowerCase().includes('bill'))
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            const shoppingSpending = allTransactions
+                .filter(tx => tx.type === 'payment' && tx.description.toLowerCase().includes('shopping'))
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            const foodSpending = allTransactions
+                .filter(tx => tx.type === 'payment' && tx.description.toLowerCase().includes('food'))
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            const fuelSpending = allTransactions
+                .filter(tx => tx.type === 'payment' && tx.description.toLowerCase().includes('fuel'))
+                .reduce((sum, tx) => sum + tx.amount, 0);
+            
+            document.getElementById("billsSpending").textContent = formatAmount(billsSpending);
+            document.getElementById("shoppingSpending").textContent = formatAmount(shoppingSpending);
+            document.getElementById("foodSpending").textContent = formatAmount(foodSpending);
+            document.getElementById("fuelSpending").textContent = formatAmount(fuelSpending);
+        }
+
+        function updateInterestAnalytics() {
+            const savingsInterest = accounts.savings.calculateInterest();
+            const currentInterest = accounts.current.calculateInterest();
+            const fdInterest = accounts.fd.calculateInterest();
+            const totalInterest = savingsInterest + currentInterest + fdInterest;
+            
+            document.getElementById("savingsInterest").textContent = formatAmount(savingsInterest);
+            document.getElementById("currentInterest").textContent = formatAmount(currentInterest);
+            document.getElementById("fdInterest").textContent = formatAmount(fdInterest);
+            document.getElementById("totalAnnualInterest").textContent = formatAmount(totalInterest);
+            
+            // Average interest rate
+            const totalBalance = accounts.savings.balance + accounts.current.balance + accounts.fd.balance;
+            const averageRate = totalBalance > 0 ? (totalInterest / totalBalance) * 100 : 0;
+            document.getElementById("averageRate").textContent = `${averageRate.toFixed(2)}%`;
+            
+            // Interest projections
+            document.getElementById("nextMonthInterest").textContent = formatAmount(totalInterest / 12);
+            document.getElementById("nextQuarterInterest").textContent = formatAmount(totalInterest / 4);
+            document.getElementById("nextYearInterest").textContent = formatAmount(totalInterest);
+        }
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => {
+                renderTransactions();
+            });
+        }
+
+        // Filter functionality
+        function addFilterChips() {
+            const activitySection = document.querySelector(".recent-activity .section-header");
+            if (!activitySection) return;
+            
+            const filtersContainer = document.createElement("div");
+            filtersContainer.className = "activity-filters";
+            filtersContainer.innerHTML = `
+                <div class="filter-chip ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">All</div>
+                <div class="filter-chip ${currentFilter === 'deposit' ? 'active' : ''}" data-filter="deposit">Deposits</div>
+                <div class="filter-chip ${currentFilter === 'withdraw' ? 'active' : ''}" data-filter="withdraw">Withdrawals</div>
+                <div class="filter-chip ${currentFilter === 'transfer' ? 'active' : ''}" data-filter="transfer">Transfers</div>
+                <div class="filter-chip ${currentFilter === 'payment' ? 'active' : ''}" data-filter="payment">Payments</div>
+            `;
+            
+            activitySection.appendChild(filtersContainer);
+            
+            filtersContainer.querySelectorAll(".filter-chip").forEach(chip => {
+                chip.addEventListener("click", () => {
+                    currentFilter = chip.dataset.filter;
+                    filtersContainer.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+                    chip.classList.add("active");
+                    renderTransactions();
+                });
+            });
+        }
+
+        // Initialize page
+        updateAnalytics();
+        addFilterChips();
+        
+        // Update analytics periodically
+        setInterval(() => {
+            updateAnalytics();
+        }, 5000);
+    </script>
+
+    <style>
+        .balance-breakdown, .transaction-stats, .growth-stats, .spending-categories, 
+        .interest-breakdown, .rate-comparison, .interest-projection {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .balance-item, .stat-item, .category-item, .interest-item, .rate-item, .projection-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .balance-item:last-child, .stat-item:last-child, .category-item:last-child, 
+        .interest-item:last-child, .rate-item:last-child, .projection-item:last-child {
+            border-bottom: none;
+        }
+
+        .rate-value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+    </style>
+</body>
+</html>
